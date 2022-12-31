@@ -1,0 +1,30 @@
+    p{
+        font-family: Arial;
+        text-align: center;
+    }
+    .title{
+        font-size: 18px;
+        font-weight: bold;
+        font-style: italic;
+        margin-bottom: 2px;
+        
+    }
+
+    .views{
+        margin-top: 2px;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: rgb(96, 96, 96);
+    }
+    
+    .author{
+        margin-top: 5px;
+        color: rgb(96, 96, 96);
+        font-size: 14px;
+    }
+    .span-example{
+        color: red;
+    }
+    .span-example:hover{
+        text-decoration:underline;
+    }
