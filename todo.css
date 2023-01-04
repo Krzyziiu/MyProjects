@@ -1,0 +1,54 @@
+body{
+    
+    align-items: center;
+    flex-direction: column;
+    background-color: darksalmon;
+    color: black;
+}
+input{
+    border-radius: 20px;
+    border-style: solid;
+    border-color:rgb(0, 255, 187);
+    margin-bottom: 5px;
+    padding: 2 4 2 4;
+}
+input:focus{
+    outline: none;
+    border-color:lightblue;
+}
+.add-button,
+.update-button{
+    width: 50px;
+    height: 24px;
+    border-style: solid;
+    border-radius: 20px;
+    border-width: 1.2px;
+    border-color: rgb(0, 255, 187);
+    margin: 1.6px;
+    padding: 2 4 2 4;
+    text-align: center;
+    background-color: white;
+}
+.edit-button,
+.delete-button{
+    width: 20px;
+    height: 20px;
+    border-style: solid;
+    border-radius: 50%;
+    border-width: 1.2px;
+    border-color: rgb(0, 255, 187);
+    margin: 1.6px;
+    padding: 0;
+    text-align: center;
+    background-color: white;
+}
+.edit-button ion-icon,
+.delete-button ion-icon{
+    width: 10px;
+    height: 10px;
+}
+.add-button:active,
+.edit-button:active,
+.delete-button:active{
+    background-color:lightgrey;
+}

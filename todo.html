@@ -1,0 +1,237 @@
+<html>
+  <head>
+    <title>My Todo App</title>
+    <link rel="stylesheet" href="todo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <input id="todo-title" type="text" />
+    <input id="datePicker" type="date" />
+    <button class="add-button" onclick="addTodo()">Add</button>
+    <div id="todo-list"></div>
+
+    <script>
+        //MVC - Each section is supposed to do only one thing
+
+
+        //*Model*: saving and managing
+        let todos;
+        if(localStorage.getItem('todos')){                            //WHEN YOU'RE DONE WITH EDITING, CHANGE "false" TO localStorage.getItem('todos')
+          todos = JSON.parse(localStorage.getItem('todos'));
+        }else{
+            todos = [{
+            title: 'Get groceries',
+            dueDate: '2021-10-02',
+            id: 'id1',
+            isDone: false,
+            isEditing: false                                  
+            },{
+            title: 'Wash car',
+            dueDate: '2021-02-03',
+            id: 'id2',
+            isDone: false,
+            isEditing: false
+            },{
+            title: 'Make dinner',
+            dueDate: '2021-03-04',
+            id: 'id3',
+            isDone: false,
+            isEditing: false
+        }];
+        }
+      
+
+
+      //creating:
+      function createTodo(title, dueDate, id){
+        todos.push({
+            title: title,
+            dueDate: dueDate,
+            id: id,
+            isDone: false,
+            isEditing: false
+        });
+        saveTodos();
+      }
+
+      //Deleting:
+      function removeTodo(idToDelete){
+        todos = todos.filter(function(todo){
+        return todo.id !== idToDelete;
+        });
+        saveTodos();
+      }
+
+      //Managing 
+      function isDoneChange(checkBoxId, checkBox){
+        todos.forEach(function(todo){
+        if(checkBoxId===todo.id){
+            todo.isDone = checkBox.checked;
+        }else{
+          return;
+        }
+            
+        });
+        saveTodos();
+      }
+
+      //Editing
+      function isEditing(editId){
+        todos.forEach(function(todo){
+          if(todo.id === editId){
+            todo.isEditing = true; 
+          }
+        })
+        saveTodos();
+      }
+
+      function editTodos(title, dueDate, id){
+        todos.forEach(function(todo){
+          if(todo.id === id)
+          {
+            todo.title =  title;
+            todo.dueDate = dueDate;
+            todo.isEditing = false;
+          }
+          else return;
+        })
+        saveTodos();
+      }
+
+
+
+      function saveTodos(){
+        localStorage.setItem('todos', JSON.stringify(todos));
+      }
+
+
+
+
+
+      //*View*: rendering from model
+      function render() {     // reset our list 
+        document.getElementById('todo-list').innerHTML = '';
+        const todoList = document.getElementById('todo-list');
+        todos.forEach(function (todos) {
+
+          if(todos.isEditing===false){
+            const element = document.createElement('div'); 
+          element.innerText = todos.title + ' ' + todos.dueDate;
+
+          
+          const editButton = document.createElement('button');
+          editButton.innerHTML =  '&#9998';
+          editButton.className = 'edit-button';
+          editButton.id = todos.id;
+          editButton.onclick = editIsEditing;
+          editButton.tabIndex = 0;
+          
+
+          const deleteButton = document.createElement('button');        
+          deleteButton.innerHTML =  '&#128465';
+          deleteButton.className = 'delete-button';
+          deleteButton.id = todos.id;
+          deleteButton.onclick = deleteTodo;
+
+          
+          const checkBox = document.createElement('input')
+          checkBox.type = 'checkbox';
+          checkBox.id = todos.id;
+          checkBox.checked = todos.isDone;
+          checkBox.onchange = isDone;
+            
+
+          element.appendChild(editButton);
+          element.appendChild(deleteButton);
+          element.prepend(checkBox);
+          todoList.appendChild(element);
+          }else{
+            const element = document.createElement('div');
+            
+            const input = document.createElement('input');
+            input.value = todos.title;
+            input.id = 'todo-title-Second';
+
+            const date = document.createElement('input');
+            date.type = 'date';
+            date.value = todos.dueDate;
+            date.id = 'datePickerSecond';
+  
+            const update = document.createElement('button');
+            update.innerText = 'Update';
+            update.className = 'update-button';
+            update.id = todos.id;
+            update.onclick = editTodo;
+            
+
+
+            element.appendChild(input);
+            element.appendChild(date);
+            element.appendChild(update);
+            todoList.appendChild(element);
+          }
+        });
+
+
+      }
+
+
+
+
+
+      //*Controller*: respond
+
+      //Create:
+      function addTodo(event) {
+          const title = document.getElementById('todo-title').value; //get inputs 
+
+
+        const datePicker= document.getElementById('datePicker');  //get inputs
+        const dueDate = datePicker.value;
+        const id = String(new Date().getTime()); //id = time in miliseconds. We do this to have different Id's
+        createTodo(title, dueDate, id);
+        
+        
+        render();
+      }
+
+      function deleteTodo(event){
+        const deleteButton = event.target;
+        const idToDelete = deleteButton.id;
+        removeTodo(idToDelete)
+        render();
+      }
+      function isDone(event){
+        const checkBox = event.target;
+        const checkBoxId = checkBox.id;
+        isDoneChange(checkBoxId, checkBox);
+        render();
+      }
+      function editIsEditing(event){
+        const editTodosId = event.target.id;
+        isEditing(editTodosId);
+        render();
+      }
+      function editTodo(event){
+        title = document.getElementById('todo-title-Second').value;
+        dueDate = document.getElementById('datePickerSecond').value;
+        id = event.target.id;
+        editTodos(title, dueDate, id);
+        render();
+      }
+
+
+
+      render(); 
+
+      
+      
+
+
+
+      
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>
