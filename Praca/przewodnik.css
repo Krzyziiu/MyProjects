@@ -1,0 +1,485 @@
+html{
+  box-sizing: border-box;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  background: rgb(0,0,0); 
+  background: linear-gradient(145deg, rgba(0,0,0,1) 0%, rgba(8,2,42,1) 51%, rgba(9,9,101,1) 87%);
+  overflow-x: hidden;
+  font-size: 16px;
+  
+}
+*, *:before, *:after{
+  box-sizing: inherit;
+  font-size: inherit;
+  font-family: inherit;
+}
+body{
+  width: 100%;
+  height: 100%;
+  padding-top: 5rem;
+  scroll-snap-type: y mandatory;
+}
+  
+#nav-bar{
+  display: flex;
+  justify-content: end;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5rem;
+  background: rgb(0,0,0);
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(4,1,20,1) 57%, rgba(4,4,50,1) 99%);
+  
+}
+#nav-bar >*{
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 1.7rem;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+#nav-bar #logo{
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 0;
+  width: 5rem;
+  height: 5rem;
+}
+#logo img{
+  width: 100%;
+  height: 100%;
+}
+#nav-bar >*:hover{
+  /* margin-top: 25px;
+  transition: margin-top 0.5s; */
+  cursor: pointer;
+  color: blue;
+}
+#nav-bar a{
+  text-decoration: none;
+  color: inherit; 
+}
+
+
+
+
+
+
+
+
+.sekcja{
+  margin-left: 15%;
+  margin-right: 15%;
+  height: 92svh;
+  display: flex;
+  align-items: center;
+  text-align: justify;
+  position: relative;
+  /* border: 2px solid white !important; */
+}
+.sekcja .jpg{
+  width: 30%;
+  height: auto;
+  opacity: 0.8;
+  margin-top: -1rem;
+  margin-left: 0.625rem;
+  margin-right: 2rem;
+  transition: transform 0.5s ease, opacity 1s ease;
+}
+.tekst{
+  color: white;
+  text-shadow: 0px 0px 0.2rem rgba(255, 255, 255, 1);
+  font-size: 2rem;
+  transition: transform 0.5s ease, opacity 1s ease-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Arrows */
+/* All arrows follow this rule set */
+.arrows-body{
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  right: 5.2%;
+  bottom: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.arrow1{
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-bottom: 2rem;
+}
+.arrow2{
+  width: 3rem;
+  height: 3rem;
+}
+.arrow1, .arrow2{
+  border-left: 0.25rem solid #fff;
+  border-top: 0.25rem solid #fff;
+  position: absolute;
+}
+/* arrow-load is for down motion of the arrow */
+@keyframes arrow-load{
+  0%{
+    opacity: 0.3;
+    transform: rotate(-135deg) translate(0.5rem, 0.5rem)
+  }
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0.3;
+    transform: rotate(-135deg) translate(-0.3125rem, -0.3125rem)
+  }
+} 
+/* arrow-load-2 is for up motion of the arrow */
+@keyframes arrow-load-2{
+  0%{
+    opacity: 0.3;
+    transform: rotate(45deg) translate(0.5rem, 0.5rem)
+  }
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0.3;
+    transform: rotate(45deg) translate(-0.3125rem, -0.3125rem)
+  }
+}
+
+/* arrow rules, different for an arrow */
+#arrow1-1, #arrow2-1{
+  transform: rotate(-135deg);
+  animation: arrow-load 1.5s infinite;
+}
+#arrow1-2, #arrow2-2{
+  transform: rotate(45);
+  animation: arrow-load-2 1.5s infinite;
+}
+#arrow1-3, #arrow2-3{
+  transform: rotate(-135deg);
+  animation: arrow-load 1.5s infinite;
+}
+#arrow1-4, #arrow2-4{
+  transform: rotate(45deg);
+  animation: arrow-load-2 1.5s infinite;
+}
+
+
+#arrows-body-2{
+  top: 2.2rem;
+}
+#arrow1-2{
+  margin-bottom: -2rem;
+}
+#arrows-body-4{
+  bottom: 2.2rem;
+  right: 1rem;
+}
+#arrow1-4{
+  margin-bottom: -2rem;
+}
+
+
+
+
+
+
+
+
+
+/* Oferma */
+.oferty{
+  position: relative;
+  width: 95%;
+  height: 87vh;
+  border: 1px solid white;
+  display: flex;
+  margin: 2rem;
+}
+.box{
+  border: 1px solid aqua;
+  width: 25rem;
+  height: 25rem;
+  position: absolute;
+  text-align: center;
+}
+.box img{
+  width: 100%;
+  height: 100%;
+}
+.box .tooltip{
+  position: absolute;
+  bottom: -5%;
+  width: 100%;
+  line-height: 1.8rem;
+  height: 3rem;
+  background-color: rgba(0,0,0,0.9);
+  color: blue;
+}
+
+
+.popup{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 70vw;
+  height: 80vh;
+  background-color: rgba(0,0,0,0.7);
+  text-align: center;
+  z-index: 99;
+  transition: all 1s ease;
+}
+.popup img{
+  position: absolute;
+  display: block;
+  top: 0;
+  width: auto;
+  height: 25rem;
+  left: 50%;
+  transform: translateX(-50%)
+}
+.popup p{
+  position: absolute;
+  top: 25rem;
+  margin-left: 5%;
+  margin-right: 5%;
+  color: white;
+  font-size: 1.3rem;
+}
+.popup .x{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: white;
+  color: black;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+
+#box1{
+  top: 3%;
+  left: 6%;
+  width: 25rem;
+  height: 16rem;
+}
+#box2{
+  top: 4%;
+  left: 38%;
+  width: 30rem;
+  height: 15.75rem;
+}
+#box3{
+  top: 12%;
+  right: 4%;
+  height: 16rem;
+  width: 20.43rem;
+}
+#box4{
+  top: 50%;
+  left: 5%;
+  height: 16rem;
+  width: 27.6875rem;
+}
+
+#box5{
+  top: 55%;
+  right: 3%;
+  height: 16rem;
+  width: 24rem;
+}
+#box6{
+  top: 47%;
+  left: 39%;
+  height: 15.25rem;
+  width: 26rem;
+}
+
+
+
+
+
+
+
+
+
+/* @Media */
+
+  
+@media screen and (min-width: 3000px){
+  html{
+    font-size: 30px;
+  }
+}
+@media screen and (min-width: 2300px){
+  html{
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 1400px){
+  html{
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 1300px){
+  html{
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 1200px){
+  html{
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 1024px){
+  html{
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 992px){
+  html{
+    font-size: 8px;
+  }
+}
+@media screen and (max-width: 768px){
+  html{
+    font-size: 6px;
+  }
+}
+@media screen and (max-width: 576px){
+  html{
+    font-size: 5px;
+  }
+}
+@media screen and (max-width: 400px){
+  html{
+    font-size: 3.5px;
+  }
+}
+
+
+
+/* third section temp code */
+#sekcja-pierwsza, #sekcja-druga, #sekcja-trzecia{
+  scroll-snap-align: top;
+}
+
+#sekcja-trzecia img{
+  position: absolute;
+  bottom: 5%;
+  width: 40%;
+  max-height: 45%; 
+  opacity: 1;
+}
+#sekcja-trzecia #img1{
+  left: 8%;
+}
+#sekcja-trzecia #img2{
+  right: 8%;
+}
+#sekcja-trzecia p{
+  position: absolute;
+  bottom: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+/* Galeria */
+#gallery{
+  margin-top: 0;
+  margin-left: 15%;
+  margin-right: 15%;
+  display: grid;
+  grid-template-columns: max-content max-content max-content max-content;
+  gap: .8% .8%;
+  /* 100-15-15=70% width*/
+  }
+  
+  .zdjecia{
+  width: 16.3vw;
+  height: 16.3vw;
+  background-color:rgb(97, 122, 122);
+  overflow: hidden;
+  position: relative;
+  }
+  
+  .zdjecia img{
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+  
+  
+  
+  .popup-pic{
+  width: auto;
+  height: auto;
+  background-color:rgb(97, 122, 122);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 1s;
+  }
+  
+  .popup-pic img{
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  }
+  .popup-pic p{
+  position: absolute;
+  top: 0;
+  left: 0;
+  }
+  
+  
+  
