@@ -17,7 +17,6 @@ body{
   width: 100%;
   height: 100%;
   padding-top: 5rem;
-  scroll-snap-type: y mandatory;
 }
   
 #nav-bar{
@@ -244,6 +243,7 @@ body{
   height: 3rem;
   background-color: rgba(0,0,0,0.9);
   color: blue;
+  
 }
 
 
@@ -336,73 +336,15 @@ body{
 
 
 
-/* @Media */
-
-  
-@media screen and (min-width: 3000px){
-  html{
-    font-size: 30px;
-  }
-}
-@media screen and (min-width: 2300px){
-  html{
-    font-size: 20px;
-  }
-}
-@media screen and (max-width: 1400px){
-  html{
-    font-size: 14px;
-  }
-}
-@media screen and (max-width: 1300px){
-  html{
-    font-size: 12px;
-  }
-}
-@media screen and (max-width: 1200px){
-  html{
-    font-size: 12px;
-  }
-}
-@media screen and (max-width: 1024px){
-  html{
-    font-size: 10px;
-  }
-}
-@media screen and (max-width: 992px){
-  html{
-    font-size: 8px;
-  }
-}
-@media screen and (max-width: 768px){
-  html{
-    font-size: 6px;
-  }
-}
-@media screen and (max-width: 576px){
-  html{
-    font-size: 5px;
-  }
-}
-@media screen and (max-width: 400px){
-  html{
-    font-size: 3.5px;
-  }
-}
-
 
 
 /* third section temp code */
-#sekcja-pierwsza, #sekcja-druga, #sekcja-trzecia{
-  scroll-snap-align: top;
-}
 
 #sekcja-trzecia img{
   position: absolute;
   bottom: 5%;
   width: 40%;
   max-height: 45%; 
-  opacity: 1;
 }
 #sekcja-trzecia #img1{
   left: 8%;
@@ -482,4 +424,75 @@ body{
   }
   
   
+  /* @Media */
+
   
+@media screen and (min-width: 3000px){
+  html{
+    font-size: 30px;
+  }
+}
+@media screen and (min-width: 2300px){
+  html{
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 1400px){
+  html{
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 1300px){
+  html{
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 1200px){
+  html{
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 1024px){
+  html{
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 992px){
+  html{
+    font-size: 8px;
+  }
+}
+@media screen and (max-width: 768px){
+  html{
+    font-size: 6px;
+  }
+}
+@media screen and (max-width: 576px){
+  html{
+    font-size: 4px;
+  }
+  .sekcja{
+    flex-direction: column;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .sekcja .jpg{
+    width: auto;
+    height: 50vh;
+  }
+  #arrows-body-2{
+    top: 23.2rem;
+  }
+
+  #sekcja-trzecia img{
+    position: static;
+  }
+  #img12{
+    display: flex;
+    gap: 20%;
+  }
+  #sekcja-trzecia p{
+    position: static;
+  }
+}
+
